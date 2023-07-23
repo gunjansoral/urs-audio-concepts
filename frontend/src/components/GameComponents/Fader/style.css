@@ -1,0 +1,34 @@
+.fader_wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background-color: #cecbcb;
+  height: 270px;
+  width: 80px;
+}
+
+.fader_wrap input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 200px;
+  height: 5px;
+  z-index: 99;
+  transform: rotate(270deg);
+  border-radius: 4px;
+  background: #5f4a4a;
+}
+.fader::-webkit-slider-thumb {
+  /* -webkit-appearance: none; */
+  /* appearance: none; */
+  appearance: none;
+  width: 25px;
+  height: 50px;
+  border: 0;
+  transform: rotate(270deg);
+  background: url("faderThumb.jpg");
+  box-shadow: -5px -2px 5px #505050;
+}
+.fader_value {
+  transform: translateY(-120px);
+}
