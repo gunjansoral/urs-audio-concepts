@@ -1,0 +1,77 @@
+.pause-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.pause-content {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 12px;
+  text-align: center;
+  min-width: 320px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.pause-content h2 {
+  margin: 0 0 2rem 0;
+  color: #2d3748;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+.pause-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.resume-button, .exit-button {
+  padding: 0.875rem;
+  border: none;
+  border-radius: 6px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.resume-button {
+  background-color: #4299e1;
+  color: white;
+}
+
+.resume-button:hover {
+  background-color: #3182ce;
+  transform: translateY(-1px);
+}
+
+.exit-button {
+  background-color: #e53e3e;
+  color: white;
+}
+
+.exit-button:hover {
+  background-color: #c53030;
+  transform: translateY(-1px);
+} 

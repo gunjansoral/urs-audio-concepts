@@ -1,0 +1,170 @@
+.game-play {
+  padding: 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.game-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.game-header h2 {
+  margin: 0;
+  color: #333;
+  font-size: 1.8rem;
+}
+
+.exit-button {
+  padding: 0.5rem 1rem;
+  background-color: #e53e3e;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.exit-button:hover {
+  background-color: #c53030;
+}
+
+.game-controls {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.play-pause-button {
+  padding: 0.75rem 1.5rem;
+  background-color: #4299e1;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.play-pause-button:hover {
+  background-color: #3182ce;
+}
+
+.volume-control {
+  flex: 1;
+}
+
+.volume-slider {
+  width: 100%;
+  height: 4px;
+  -webkit-appearance: none;
+  background: #e2e8f0;
+  border-radius: 2px;
+  outline: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background: #4299e1;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.frequency-spectrum {
+  margin-bottom: 2rem;
+}
+
+.spectrum-container {
+  display: flex;
+  gap: 2px;
+  height: 200px;
+  background: #f7fafc;
+  border-radius: 4px;
+  padding: 1rem;
+}
+
+.frequency-band {
+  flex: 1;
+  background: #e2e8f0;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.frequency-band:hover {
+  background: #cbd5e0;
+}
+
+.frequency-band.selected {
+  background: #4299e1;
+}
+
+.game-status {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background: #f7fafc;
+  border-radius: 4px;
+}
+
+.round-info, .difficulty-info {
+  color: #4a5568;
+  font-size: 1rem;
+}
+
+.game-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.submit-button, .next-button {
+  flex: 1;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submit-button {
+  background-color: #48bb78;
+  color: white;
+}
+
+.submit-button:hover {
+  background-color: #38a169;
+}
+
+.submit-button:disabled {
+  background-color: #cbd5e0;
+  cursor: not-allowed;
+}
+
+.next-button {
+  background-color: #4299e1;
+  color: white;
+}
+
+.next-button:hover {
+  background-color: #3182ce;
+}
+
+.feedback-area {
+  min-height: 60px;
+  padding: 1rem;
+  background: #f7fafc;
+  border-radius: 4px;
+  text-align: center;
+  color: #4a5568;
+} 
