@@ -1,0 +1,91 @@
+.eq-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 24px;
+  background: #1a1a2e;
+  border-radius: 24px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.eq-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.eq-header h2 {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.eq-controls {
+  display: flex;
+  gap: 12px;
+}
+
+.eq-controls button {
+  background: rgba(30, 30, 40, 0.7);
+  border: none;
+  border-radius: 12px;
+  padding: 8px 16px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.eq-controls button:hover {
+  background: rgba(40, 40, 50, 0.9);
+}
+
+.eq-controls button.active {
+  background: #4caf50;
+}
+
+.eq-presets {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.eq-presets button {
+  background: rgba(30, 30, 40, 0.7);
+  border: none;
+  border-radius: 12px;
+  padding: 8px 16px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.eq-presets button:hover {
+  background: rgba(40, 40, 50, 0.9);
+}
+
+.eq-help {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
+  margin-top: 16px;
+}
+
+.eq-help p {
+  margin: 0;
+}
+
+/* Tooltip styles */
+.tooltip {
+  position: fixed;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  pointer-events: none;
+  z-index: 1000;
+}
