@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './FindTheFreq.css';
-import { playFrequency, formatFrequency, calculateTolerance} from './audioUtils';
+import { playFrequency, formatFrequency, calculateTolerance, stopCurrentSound } from './audioUtils';
 
 interface GameState {
   currentRound: number;
@@ -28,8 +28,8 @@ interface GameState {
 }
 
 // Logarithmic scale for frequencies from 20Hz to 20kHz
-const MIN_FREQ = 20;
-const MAX_FREQ = 20000;
+const MIN_FREQ = 18;
+const MAX_FREQ = 30000;
 const FREQUENCY_LABELS = [
   20, 50, 100, 200, 500, 1000, 2000, 5000, 10000, 20000
 ];
@@ -108,11 +108,13 @@ const FindTheFreq: React.FC = () => {
     return Math.max(1, Math.min(100, cursorWidth)); // Ensure width is between 1% and 100%
   };
 
-  // Generate a random frequency within the current band
+  // Generate a random frequency across the full range using logarithmic distribution
   const generateTargetFrequency = () => {
-    const { min, max } = gameState.frequencyBand;
-    const position = Math.random();
-    return Math.round(min + (max - min) * position);
+    // Use logarithmic distribution for more natural frequency spread across full range
+    const minLog = Math.log10(MIN_FREQ);
+    const maxLog = Math.log10(MAX_FREQ);
+    const randomLog = minLog + (maxLog - minLog) * Math.random();
+    return Math.round(Math.pow(10, randomLog));
   };
 
   // Start a new round
@@ -271,6 +273,7 @@ const FindTheFreq: React.FC = () => {
   // Handle mouse click on spectrum
   const handleClick = (e: React.MouseEvent) => {
     const frequency = calculateFrequency(e.clientX);
+    stopCurrentSound(); // Stop the sound when user clicks
     handleFrequencySelect(frequency);
   };
 
