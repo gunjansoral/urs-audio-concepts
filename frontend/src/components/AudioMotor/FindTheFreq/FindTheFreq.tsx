@@ -78,6 +78,16 @@ const FindTheFreq: React.FC = () => {
   
   const spectrumRef = useRef<HTMLDivElement | null>(null);
 
+  // Clear feedback after animation completes
+  useEffect(() => {
+    if (feedback) {
+      const timer = setTimeout(() => {
+        setFeedback(null);
+      }, 1000);
+      return () => clearTimeout(timer);
+    }
+  }, [feedback]);
+
   // Convert linear position (0-1) to logarithmic frequency
   const positionToFrequency = (position: number): number => {
     const minLog = Math.log10(MIN_FREQ);
@@ -464,9 +474,6 @@ const FindTheFreq: React.FC = () => {
               >
                 <i className="fas fa-info-circle"></i>
               </button>
-            </div>
-            <div className="frequency-band-info">
-              Range: {formatFrequency(gameState.frequencyBand.min)} - {formatFrequency(gameState.frequencyBand.max)}
             </div>
           </div>
 

@@ -4,128 +4,180 @@ const digitalGlassTheme = createTheme({
   palette: {
     mode: "dark",
     primary: {
-      main: "#00BFFF", // Electric Blue
+      main: "#2D7FF9", // Digital Blue
       contrastText: "#fff",
     },
     secondary: {
-      main: "#A259FF", // Neon Purple
-      contrastText: "#fff",
+      main: "#7B61FF", // Digital Purple
+      contrastText: "#ffffff",
     },
     background: {
-      default: "#181A20", // Digital dark
-      paper: "#23263A",
+      default: "#0A0D14", // Deep Dark
+      paper: "#131722", // Slightly lighter dark
     },
     success: {
-      main: "#00FFC6", // Neon Aqua
+      main: "#00E5A3", // Digital Green
     },
     warning: {
-      main: "#FFD600", // Neon Yellow
+      main: "#FFB547", // Digital Orange
     },
     error: {
-      main: "#FF4C60", // Neon Red
+      main: "#FF4B4B", // Digital Red
     },
     info: {
-      main: "#00FFC6", // Aqua
+      main: "#2D7FF9", // Matching primary
     },
     text: {
-      primary: "#fff",
-      secondary: "#B0B3C6",
+      primary: "#E4E6F0",
+      secondary: "#8B8FA3",
     },
   },
   typography: {
-    fontFamily: "'Montserrat', 'Poppins', 'Roboto', Arial, sans-serif",
-    fontWeightRegular: 700,
-    fontWeightMedium: 700,
-    fontWeightBold: 800,
+    fontFamily: "'Inter', 'Roboto', sans-serif",
+    fontWeightRegular: 500,
+    fontWeightMedium: 600,
+    fontWeightBold: 700,
     h1: {
-      fontFamily: "'Orbitron', 'Share Tech Mono', 'Montserrat', sans-serif",
-      fontWeight: 800,
-      letterSpacing: 2,
+      fontFamily: "'Inter', sans-serif",
+      fontWeight: 700,
+      letterSpacing: -0.5,
     },
     h2: {
-      fontFamily: "'Orbitron', 'Share Tech Mono', 'Montserrat', sans-serif",
-      fontWeight: 800,
-      letterSpacing: 2,
+      fontFamily: "'Inter', sans-serif",
+      fontWeight: 700,
+      letterSpacing: -0.25,
     },
     h3: {
-      fontFamily: "'Orbitron', 'Share Tech Mono', 'Montserrat', sans-serif",
-      fontWeight: 800,
-      letterSpacing: 1.5,
+      fontFamily: "'Inter', sans-serif",
+      fontWeight: 700,
+      letterSpacing: 0,
     },
     h4: {
-      fontFamily: "'Orbitron', 'Share Tech Mono', 'Montserrat', sans-serif",
-      fontWeight: 800,
-      letterSpacing: 1.5,
+      fontFamily: "'Inter', sans-serif",
+      fontWeight: 700,
+      letterSpacing: 0.25,
     },
     h5: {
-      fontFamily: "'Orbitron', 'Share Tech Mono', 'Montserrat', sans-serif",
-      fontWeight: 800,
-      letterSpacing: 1,
+      fontFamily: "'Inter', sans-serif",
+      fontWeight: 700,
+      letterSpacing: 0,
     },
     h6: {
-      fontFamily: "'Orbitron', 'Share Tech Mono', 'Montserrat', sans-serif",
-      fontWeight: 800,
-      letterSpacing: 1,
+      fontFamily: "'Inter', sans-serif",
+      fontWeight: 700,
+      letterSpacing: 0.15,
     },
     button: {
-      fontFamily: "'Orbitron', 'Share Tech Mono', 'Montserrat', sans-serif",
+      fontFamily: "'Inter', sans-serif",
       textTransform: "none",
-      fontWeight: 800,
-      letterSpacing: 1,
+      fontWeight: 600,
+      letterSpacing: 0.5,
     },
-    body1: { fontWeight: 700 },
-    body2: { fontWeight: 700 },
-    subtitle1: { fontWeight: 700 },
-    subtitle2: { fontWeight: 700 },
-    caption: { fontWeight: 700 },
-    overline: { fontWeight: 700 },
+    body1: { fontWeight: 500 },
+    body2: { fontWeight: 500 },
+    subtitle1: { fontWeight: 500 },
+    subtitle2: { fontWeight: 500 },
+    caption: { fontWeight: 500 },
+    overline: { fontWeight: 500 },
   },
   components: {
+    MuiCssBaseline: {
+      styleOverrides: {
+        body: {
+          backgroundColor: "#0A0D14",
+          color: "#E4E6F0",
+          fontFamily: "'Inter', 'Roboto', sans-serif",
+          fontWeight: 500,
+          margin: 0,
+          padding: 0,
+        },
+        a: {
+          color: "#2D7FF9",
+          textDecoration: "none",
+          "&:hover": {
+            color: "#7B61FF",
+          },
+        },
+        input: {
+          backgroundColor: "rgba(19, 23, 34, 0.7)",
+          color: "#E4E6F0",
+          border: "1px solid rgba(255, 255, 255, 0.1)",
+          borderRadius: 8,
+          padding: "8px 12px",
+          "&:focus": {
+            outline: "none",
+            borderColor: "#2D7FF9",
+          },
+        },
+        button: {
+          backgroundColor: "#2D7FF9",
+          color: "#ffffff",
+          border: "none",
+          borderRadius: 8,
+          padding: "8px 16px",
+          cursor: "pointer",
+          fontWeight: 600,
+          "&:hover": {
+            backgroundColor: "#7B61FF",
+          },
+        },
+        "h1, h2, h3, h4, h5, h6": {
+          color: "#E4E6F0",
+          fontFamily: "'Inter', sans-serif",
+          fontWeight: 700,
+        },
+      },
+    },
     MuiCard: {
       styleOverrides: {
         root: {
-          background: "rgba(35, 38, 58, 0.55)",
-          boxShadow: "0 0 10px 0 #00BFFF33, 0 2px 8px 0 #0008", // subtle glow
-          borderRadius: 20,
-          border: "1.5px solid rgba(0,191,255,0.18)",
-          backdropFilter: "blur(16px)",
-          WebkitBackdropFilter: "blur(16px)",
+          background: "rgba(19, 23, 34, 0.7)",
+          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.2)",
+          borderRadius: 12,
+          border: "none",
+          backdropFilter: "blur(10px)",
+          WebkitBackdropFilter: "blur(10px)",
         },
       },
     },
     MuiPaper: {
       styleOverrides: {
         root: {
-          background: "rgba(35, 38, 58, 0.45)",
-          border: "1.5px solid rgba(162,89,255,0.13)",
-          backdropFilter: "blur(14px)",
-          WebkitBackdropFilter: "blur(14px)",
+          background: "rgba(19, 23, 34, 0.8)",
+          border: "none",
+          backdropFilter: "blur(10px)",
+          WebkitBackdropFilter: "blur(10px)",
         },
       },
     },
     MuiDrawer: {
       styleOverrides: {
         paper: {
-          background: "rgba(24,26,32,0.7)",
-          borderRight: "1.5px solid rgba(0,191,255,0.13)",
-          backdropFilter: "blur(18px)",
-          WebkitBackdropFilter: "blur(18px)",
+          background: "rgba(19, 23, 34, 0.95)",
+          borderRight: "none",
+          backdropFilter: "blur(10px)",
+          WebkitBackdropFilter: "blur(10px)",
         },
       },
     },
     MuiAvatar: {
       styleOverrides: {
         root: {
-          boxShadow: "0 0 6px 0 #A259FF44", // subtle
+          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.15)",
+          border: "none",
         },
       },
     },
     MuiButton: {
       styleOverrides: {
         root: {
-          boxShadow: "0 0 4px 0 #00BFFF44",
+          boxShadow: "0 2px 8px rgba(0, 0, 0, 0.15)",
           borderRadius: 8,
-          fontWeight: 800,
+          fontWeight: 600,
+          border: "none",
+          "&:hover": {
+            boxShadow: "0 4px 12px rgba(0, 0, 0, 0.2)",
+          },
         },
       },
     },

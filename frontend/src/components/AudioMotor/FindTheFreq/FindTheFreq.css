@@ -383,6 +383,8 @@
   animation: feedbackPulse 1s ease-in-out;
   z-index: 1000;
   backdrop-filter: blur(10px);
+  opacity: 0;
+  pointer-events: none;
 }
 
 .feedback.correct {
@@ -399,8 +401,8 @@
 
 @keyframes feedbackPulse {
   0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
-  20% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
-  80% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  10% { transform: translate(-50%, -50%) scale(1.1); opacity: 1; }
+  90% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
   100% { transform: translate(-50%, -50%) scale(0.8); opacity: 0; }
 }
 

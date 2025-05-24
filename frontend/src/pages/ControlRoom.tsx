@@ -6,6 +6,8 @@ import {
   LinearProgress,
   Button,
   useTheme,
+  Container,
+  Grid,
 } from "@mui/material";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import StarIcon from "@mui/icons-material/Star";
@@ -25,22 +27,26 @@ const StatMiniCard = ({ icon, title, value, color }: any) => (
     sx={{
       minWidth: 120,
       flex: 1,
-      mx: 1,
-      p: 1,
+      p: 2,
       display: "flex",
       alignItems: "center",
-      boxShadow: 2,
+      boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
       borderRadius: 2,
+      transition: "transform 0.2s, box-shadow 0.2s",
+      "&:hover": {
+        transform: "translateY(-2px)",
+        boxShadow: "0 4px 20px rgba(0,0,0,0.12)",
+      },
     }}
   >
-    <Avatar sx={{ bgcolor: color, width: 40, height: 40, mr: 2 }}>
+    <Avatar sx={{ bgcolor: color, width: 48, height: 48, mr: 2 }}>
       {icon}
     </Avatar>
     <Box>
       <Typography
         variant="body2"
         color="textSecondary"
-        sx={{ fontWeight: 500 }}
+        sx={{ fontWeight: 500, mb: 0.5 }}
       >
         {title}
       </Typography>
@@ -77,97 +83,142 @@ const LeftPanel = () => {
   return (
     <Box
       sx={{
-        width: { xs: "100%", md: 260 },
+        width: { xs: "100%", md: 280 },
         flexShrink: 0,
         mb: { xs: 3, md: 0 },
       }}
     >
-      {/* Profile Card */}
       <Card
         sx={{
           mb: 2,
-          p: 2,
+          p: 3,
           display: "flex",
           alignItems: "center",
           flexDirection: "column",
+          boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+          borderRadius: 2,
         }}
       >
         <Avatar
           sx={{
-            width: 64,
-            height: 64,
-            mb: 1,
+            width: 80,
+            height: 80,
+            mb: 2,
             bgcolor: theme.palette.primary.main,
+            boxShadow: "0 4px 20px rgba(0,0,0,0.12)",
           }}
         >
           U
         </Avatar>
-        <Typography variant="h6">User Name</Typography>
-        <Typography variant="body2" color="textSecondary">
+        <Typography variant="h6" sx={{ mb: 0.5 }}>User Name</Typography>
+        <Typography variant="body2" color="textSecondary" sx={{ mb: 1 }}>
           Level 7 • Pro Member
         </Typography>
-        <Box sx={{ display: "flex", gap: 1, mt: 1 }}>
-          <StarIcon color="info" fontSize="small" />
-          <Typography variant="caption">XP: 2,700</Typography>
-          <WhatshotIcon color="error" fontSize="small" />
-          <Typography variant="caption">Streak: 7d</Typography>
+        <Box sx={{ display: "flex", gap: 2, mt: 1 }}>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+            <StarIcon color="info" fontSize="small" />
+            <Typography variant="caption">XP: 2,700</Typography>
+          </Box>
+          <Box sx={{ display: "flex", alignItems: "center", gap: 0.5 }}>
+            <WhatshotIcon color="error" fontSize="small" />
+            <Typography variant="caption">Streak: 7d</Typography>
+          </Box>
         </Box>
       </Card>
-      {/* Quick Links */}
-      <Card sx={{ mb: 2, p: 2 }}>
-        <Typography variant="subtitle2" sx={{ mb: 1 }}>
+
+      <Card 
+        sx={{ 
+          mb: 2, 
+          p: 2.5,
+          boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+          borderRadius: 2,
+        }}
+      >
+        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 600 }}>
           Quick Links
         </Typography>
-        <Button
-          fullWidth
-          startIcon={<PsychologyIcon />}
-          variant="outlined"
-          sx={{ mb: 1, textTransform: "none" }}
-        >
-          SkillScan
-        </Button>
-        <Button
-          fullWidth
-          startIcon={<LibraryMusicIcon />}
-          variant="outlined"
-          sx={{ mb: 1, textTransform: "none" }}
-        >
-          AudioMotor
-        </Button>
-        <Button
-          fullWidth
-          startIcon={<SchoolIcon />}
-          variant="outlined"
-          sx={{ mb: 1, textTransform: "none" }}
-        >
-          CourseDesigner
-        </Button>
-        <Button
-          fullWidth
-          startIcon={<LibraryMusicIcon />}
-          variant="outlined"
-          sx={{ mb: 1, textTransform: "none" }}
-        >
-          Library
-        </Button>
-        <Button
-          fullWidth
-          startIcon={<CloudUploadIcon />}
-          variant="outlined"
-          sx={{ mb: 1, textTransform: "none" }}
-        >
-          MixDrop
-        </Button>
-        <Button
-          fullWidth
-          startIcon={<SportsEsportsIcon />}
-          variant="outlined"
-          sx={{ textTransform: "none" }}
-        >
-          SoundBattles
-        </Button>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+          <Button
+            fullWidth
+            startIcon={<PsychologyIcon />}
+            variant="outlined"
+            sx={{ 
+              textTransform: "none",
+              py: 1,
+              justifyContent: "flex-start",
+              borderRadius: 1.5,
+            }}
+          >
+            SkillScan
+          </Button>
+          <Button
+            fullWidth
+            startIcon={<LibraryMusicIcon />}
+            variant="outlined"
+            sx={{ 
+              textTransform: "none",
+              py: 1,
+              justifyContent: "flex-start",
+              borderRadius: 1.5,
+            }}
+          >
+            AudioMotor
+          </Button>
+          <Button
+            fullWidth
+            startIcon={<SchoolIcon />}
+            variant="outlined"
+            sx={{ 
+              textTransform: "none",
+              py: 1,
+              justifyContent: "flex-start",
+              borderRadius: 1.5,
+            }}
+          >
+            CourseDesigner
+          </Button>
+          <Button
+            fullWidth
+            startIcon={<LibraryMusicIcon />}
+            variant="outlined"
+            sx={{ 
+              textTransform: "none",
+              py: 1,
+              justifyContent: "flex-start",
+              borderRadius: 1.5,
+            }}
+          >
+            Library
+          </Button>
+          <Button
+            fullWidth
+            startIcon={<CloudUploadIcon />}
+            variant="outlined"
+            sx={{ 
+              textTransform: "none",
+              py: 1,
+              justifyContent: "flex-start",
+              borderRadius: 1.5,
+            }}
+          >
+            MixDrop
+          </Button>
+          <Button
+            fullWidth
+            startIcon={<SportsEsportsIcon />}
+            variant="outlined"
+            sx={{ 
+              textTransform: "none",
+              py: 1,
+              justifyContent: "flex-start",
+              borderRadius: 1.5,
+            }}
+          >
+            SoundBattles
+          </Button>
+        </Box>
       </Card>
-      {/* Mini Skill Tree */}
+
       <MiniSkillTree />
     </Box>
   );
@@ -212,6 +263,61 @@ const FeedPost = ({ user, time, content, image }: any) => (
   </Card>
 );
 
+const CreatePost = () => (
+  <Card sx={{ mb: 3, p: 2 }}>
+    <Box sx={{ display: "flex", alignItems: "center", mb: 2 }}>
+      <Avatar sx={{ mr: 2 }}>U</Avatar>
+      <Typography variant="subtitle2" sx={{ fontWeight: 600 }}>
+        What's on your mind?
+      </Typography>
+    </Box>
+    <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
+      <Box
+        component="textarea"
+        placeholder="Share your thoughts, upload a mix, or ask for feedback..."
+        sx={{
+          width: "100%",
+          minHeight: 100,
+          p: 2,
+          border: "1px solid",
+          borderColor: "divider",
+          borderRadius: 1,
+          resize: "none",
+          fontFamily: "inherit",
+          fontSize: "inherit",
+          "&:focus": {
+            outline: "none",
+            borderColor: "primary.main",
+          },
+        }}
+      />
+      <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+        <Box sx={{ display: "flex", gap: 1 }}>
+          <Button
+            size="small"
+            startIcon={<CloudUploadIcon />}
+            variant="outlined"
+            sx={{ textTransform: "none" }}
+          >
+            Upload Audio
+          </Button>
+          <Button
+            size="small"
+            startIcon={<LibraryMusicIcon />}
+            variant="outlined"
+            sx={{ textTransform: "none" }}
+          >
+            Add Mix
+          </Button>
+        </Box>
+        <Button variant="contained" color="primary">
+          Post
+        </Button>
+      </Box>
+    </Box>
+  </Card>
+);
+
 const Feed = () => {
   // Dummy feed data
   const posts = [
@@ -247,8 +353,7 @@ const Feed = () => {
 };
 
 const CenterPanel = () => (
-  <Box sx={{ flex: 1, minWidth: 0, maxWidth: 700, mx: "auto" }}>
-    {/* Welcome/Overview */}
+  <Box sx={{ flex: 1, minWidth: 0, maxWidth: 800, mx: "auto" }}>
     <Card
       sx={{
         mb: 3,
@@ -257,69 +362,85 @@ const CenterPanel = () => (
         alignItems: "center",
         justifyContent: "space-between",
         flexWrap: "wrap",
+        boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+        borderRadius: 2,
       }}
     >
       <Box>
-        <Typography variant="h5" className="glow" sx={{ fontWeight: 700 }}>
+        <Typography variant="h5" sx={{ fontWeight: 700, mb: 1 }}>
           Welcome back, User!
         </Typography>
-        <Typography variant="body2" color="textSecondary">
-          Level 7 • <span className="glow">2,700 XP</span> •{" "}
-          <span className="glow">7-day streak</span>
+        <Typography variant="body2" color="textSecondary" sx={{ mb: 1 }}>
+          Level 7 • <span>2,700 XP</span> •{" "}
+          <span>7-day streak</span>
         </Typography>
-        <Typography variant="caption" color="primary">
+        <Typography variant="caption" color="primary" sx={{ fontStyle: "italic" }}>
           "Keep pushing your limits!"
         </Typography>
       </Box>
       <Avatar
         sx={{
-          width: 56,
-          height: 56,
+          width: 64,
+          height: 64,
           bgcolor: "primary.main",
-          boxShadow: "0 0 16px #00BFFF",
+          boxShadow: "0 0 20px rgba(0,191,255,0.4)",
         }}
       >
         U
       </Avatar>
     </Card>
-    {/* Analytics/Stats Row */}
-    <Box sx={{ mb: 3 }}>
-      <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
-        <StatMiniCard
-          icon={<EmojiEventsIcon />}
-          title="Reward Points"
-          value={<span className="glow">129,904</span>}
-          color="#ffa000"
-        />
-        <StatMiniCard
-          icon={<StarIcon />}
-          title="XP"
-          value={<span className="glow">2,700</span>}
-          color="#0288d1"
-        />
-        <StatMiniCard
-          icon={<LeaderboardIcon />}
-          title="Global Rank"
-          value={<span className="glow">#152</span>}
-          color="#1976d2"
-        />
-        <StatMiniCard
-          icon={<SchoolIcon />}
-          title="Courses Done"
-          value={<span className="glow">12</span>}
-          color="#43a047"
-        />
-        <StatMiniCard
-          icon={<MilitaryTechIcon />}
-          title="Badges"
-          value={<span className="glow">5</span>}
-          color="#c62828"
-        />
-      </Box>
+
+    <Box sx={{ 
+      display: "grid", 
+      gridTemplateColumns: {
+        xs: "1fr",
+        sm: "repeat(2, 1fr)",
+        md: "repeat(3, 1fr)"
+      },
+      gap: 2,
+      mb: 3 
+    }}>
+      <StatMiniCard
+        icon={<EmojiEventsIcon />}
+        title="Reward Points"
+        value={<span>129,904</span>}
+        color="#ffa000"
+      />
+      <StatMiniCard
+        icon={<StarIcon />}
+        title="XP"
+        value={<span>2,700</span>}
+        color="#0288d1"
+      />
+      <StatMiniCard
+        icon={<LeaderboardIcon />}
+        title="Global Rank"
+        value={<span>#152</span>}
+        color="#1976d2"
+      />
+      <StatMiniCard
+        icon={<SchoolIcon />}
+        title="Courses Done"
+        value={<span>12</span>}
+        color="#43a047"
+      />
+      <StatMiniCard
+        icon={<MilitaryTechIcon />}
+        title="Badges"
+        value={<span>5</span>}
+        color="#c62828"
+      />
     </Box>
-    {/* Recommendations */}
-    <Card sx={{ mb: 3, p: 2 }}>
-      <Typography variant="subtitle2" sx={{ mb: 1 }}>
+
+    <Card 
+      sx={{ 
+        mb: 3, 
+        p: 2.5,
+        boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+        borderRadius: 2,
+      }}
+    >
+      <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 600 }}>
         Recommended for You
       </Typography>
       <Box sx={{ display: "flex", gap: 2, flexWrap: "wrap" }}>
@@ -328,6 +449,11 @@ const CenterPanel = () => (
           color="primary"
           startIcon={<PsychologyIcon />}
           className="glow"
+          sx={{ 
+            borderRadius: 2,
+            px: 3,
+            py: 1,
+          }}
         >
           Practice: EQ Challenge
         </Button>
@@ -335,28 +461,55 @@ const CenterPanel = () => (
           variant="outlined"
           color="secondary"
           startIcon={<SportsEsportsIcon />}
+          sx={{ 
+            borderRadius: 2,
+            px: 3,
+            py: 1,
+          }}
         >
           Join: SoundBattle
         </Button>
-        <Button variant="outlined" color="success" startIcon={<SchoolIcon />}>
+        <Button 
+          variant="outlined" 
+          color="success" 
+          startIcon={<SchoolIcon />}
+          sx={{ 
+            borderRadius: 2,
+            px: 3,
+            py: 1,
+          }}
+        >
           Continue: Mixing Course
         </Button>
       </Box>
     </Card>
-    {/* Activity Feed */}
-    <Card sx={{ mb: 3, p: 2 }}>
-      <Typography variant="subtitle2" sx={{ mb: 2 }}>
+
+    <Card 
+      sx={{ 
+        mb: 3, 
+        p: 2.5,
+        boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+        borderRadius: 2,
+      }}
+    >
+      <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 600 }}>
         Recent Activity
       </Typography>
+      <CreatePost />
       <Feed />
     </Card>
-    {/* Quick Actions */}
-    <Box sx={{ display: "flex", gap: 2, mb: 2 }}>
+
+    <Box sx={{ display: "flex", gap: 2, mb: 2, flexWrap: "wrap" }}>
       <Button
         variant="contained"
         color="primary"
         startIcon={<LibraryMusicIcon />}
         className="glow"
+        sx={{ 
+          borderRadius: 2,
+          px: 4,
+          py: 1.5,
+        }}
       >
         Start Training
       </Button>
@@ -364,6 +517,11 @@ const CenterPanel = () => (
         variant="contained"
         color="secondary"
         startIcon={<CloudUploadIcon />}
+        sx={{ 
+          borderRadius: 2,
+          px: 4,
+          py: 1.5,
+        }}
       >
         Upload Mix
       </Button>
@@ -371,6 +529,11 @@ const CenterPanel = () => (
         variant="contained"
         color="success"
         startIcon={<SportsEsportsIcon />}
+        sx={{ 
+          borderRadius: 2,
+          px: 4,
+          py: 1.5,
+        }}
       >
         Join Battle
       </Button>
@@ -401,75 +564,110 @@ const RightPanel = () => {
         mb: { xs: 3, md: 0 },
       }}
     >
-      {/* Leaderboard */}
-      <Card sx={{ mb: 2, p: 2 }}>
-        <Typography variant="subtitle2" sx={{ mb: 1 }}>
+      <Card 
+        sx={{ 
+          mb: 2, 
+          p: 2.5,
+          boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+          borderRadius: 2,
+        }}
+      >
+        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 600 }}>
           AudioLeague Leaderboard
         </Typography>
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5 }}>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <Avatar sx={{ width: 28, height: 28, mr: 1 }}>A</Avatar>
+            <Avatar sx={{ width: 32, height: 32, mr: 1 }}>A</Avatar>
             <Typography variant="body2">
               Alice <b>#1</b>
             </Typography>
           </Box>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <Avatar sx={{ width: 28, height: 28, mr: 1 }}>B</Avatar>
+            <Avatar sx={{ width: 32, height: 32, mr: 1 }}>B</Avatar>
             <Typography variant="body2">
               Bob <b>#2</b>
             </Typography>
           </Box>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <Avatar sx={{ width: 28, height: 28, mr: 1 }}>C</Avatar>
+            <Avatar sx={{ width: 32, height: 32, mr: 1 }}>C</Avatar>
             <Typography variant="body2">
               Charlie <b>#3</b>
             </Typography>
           </Box>
         </Box>
       </Card>
-      {/* MentorX Widget */}
+
       <MentorXWidget />
-      {/* Who to Follow */}
-      <Card sx={{ mb: 2, p: 2 }}>
-        <Typography variant="subtitle2" sx={{ mb: 1 }}>
+
+      <Card 
+        sx={{ 
+          mb: 2, 
+          p: 2.5,
+          boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+          borderRadius: 2,
+        }}
+      >
+        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 600 }}>
           Who to follow
         </Typography>
-        <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
+        <Box sx={{ display: "flex", flexDirection: "column", gap: 1.5 }}>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <Avatar sx={{ width: 28, height: 28, mr: 1 }}>D</Avatar>
+            <Avatar sx={{ width: 32, height: 32, mr: 1 }}>D</Avatar>
             <Typography variant="body2">Diana</Typography>
             <Button
               size="small"
               variant="outlined"
-              sx={{ ml: "auto", textTransform: "none" }}
+              sx={{ 
+                ml: "auto", 
+                textTransform: "none",
+                borderRadius: 1.5,
+              }}
             >
               Follow
             </Button>
           </Box>
           <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
-            <Avatar sx={{ width: 28, height: 28, mr: 1 }}>E</Avatar>
+            <Avatar sx={{ width: 32, height: 32, mr: 1 }}>E</Avatar>
             <Typography variant="body2">Eve</Typography>
             <Button
               size="small"
               variant="outlined"
-              sx={{ ml: "auto", textTransform: "none" }}
+              sx={{ 
+                ml: "auto", 
+                textTransform: "none",
+                borderRadius: 1.5,
+              }}
             >
               Follow
             </Button>
           </Box>
         </Box>
       </Card>
-      {/* Learning Progress */}
-      <Card sx={{ p: 2 }}>
-        <Typography variant="subtitle2" sx={{ mb: 1 }}>
+
+      <Card 
+        sx={{ 
+          p: 2.5,
+          boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+          borderRadius: 2,
+        }}
+      >
+        <Typography variant="subtitle2" sx={{ mb: 2, fontWeight: 600 }}>
           Learning Progress
         </Typography>
-        <Box sx={{ mb: 1 }}>
-          <Typography variant="body2">Mix & Mastering</Typography>
+        <Box sx={{ mb: 2 }}>
+          <Typography variant="body2" sx={{ mb: 1 }}>Mix & Mastering</Typography>
           <LinearProgress
             variant="determinate"
             value={19.4}
-            sx={{ height: 8, borderRadius: 4, my: 1 }}
+            sx={{ 
+              height: 8, 
+              borderRadius: 4, 
+              mb: 1,
+              backgroundColor: "rgba(0,0,0,0.08)",
+              "& .MuiLinearProgress-bar": {
+                borderRadius: 4,
+              }
+            }}
           />
           <Typography variant="caption" color="textSecondary">
             19.4% completed
@@ -482,13 +680,13 @@ const RightPanel = () => {
 
 const ControlRoom = () => {
   return (
-    <Box sx={{ p: { xs: 1, md: 3 }, maxWidth: 1600, mx: "auto" }}>
+    <Container maxWidth="xl" sx={{ py: { xs: 2, md: 4 } }}>
       <Box sx={{ display: { xs: "block", md: "flex" }, gap: 3 }}>
         <LeftPanel />
         <CenterPanel />
         <RightPanel />
       </Box>
-    </Box>
+    </Container>
   );
 };
 
