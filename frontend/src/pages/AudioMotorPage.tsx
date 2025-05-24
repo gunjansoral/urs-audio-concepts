@@ -1,4 +1,3 @@
-import React from 'react';
 import { AudioMotorProvider } from '../context/AudioMotorContext';
 import AudioMotor from '../components/AudioMotor/AudioMotor';
 

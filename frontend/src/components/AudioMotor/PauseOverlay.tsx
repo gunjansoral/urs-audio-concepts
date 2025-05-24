@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAudioMotor } from '../../context/AudioMotorContext';
 import './PauseOverlay.css';
 
