@@ -7,7 +7,6 @@ import {
   Button,
   useTheme,
   Container,
-  Grid,
 } from "@mui/material";
 import EmojiEventsIcon from "@mui/icons-material/EmojiEvents";
 import StarIcon from "@mui/icons-material/Star";

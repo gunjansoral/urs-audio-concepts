@@ -2,7 +2,7 @@ import { Card as MuiCard } from '@mui/material';
 import type { CardProps as MuiCardProps } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-const StyledCard = styled(MuiCard)(({ theme }) => ({
+const StyledCard = styled(MuiCard)(() => ({
   background: 'rgba(19, 23, 34, 0.7)',
   backdropFilter: 'blur(10px)',
   WebkitBackdropFilter: 'blur(10px)',
