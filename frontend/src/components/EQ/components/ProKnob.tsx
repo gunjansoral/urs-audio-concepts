@@ -7,7 +7,6 @@ const ProKnob: React.FC<ProKnobProps> = ({
   max,
   step,
   onChange,
-  onDoubleClick = () => {},
   label,
   arcColor = "#4CAF50",
   arcRange,

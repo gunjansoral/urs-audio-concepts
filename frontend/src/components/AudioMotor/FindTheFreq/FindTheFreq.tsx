@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import './FindTheFreq.css';
-import { playFrequency, formatFrequency, calculateTolerance, isWithinTolerance } from './audioUtils';
+import { playFrequency, formatFrequency, calculateTolerance} from './audioUtils';
 
 interface GameState {
   currentRound: number;
@@ -76,7 +76,6 @@ const FindTheFreq: React.FC = () => {
   const [feedback, setFeedback] = useState<'correct' | 'incorrect' | null>(null);
   const [mousePosition, setMousePosition] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   
-  const audioRef = useRef<HTMLAudioElement | null>(null);
   const spectrumRef = useRef<HTMLDivElement | null>(null);
 
   // Convert linear position (0-1) to logarithmic frequency
@@ -102,24 +101,11 @@ const FindTheFreq: React.FC = () => {
   };
 
   // Calculate cursor width based on current frequency and band
-  const calculateCursorWidth = (frequency: number) => {
+  const calculateCursorWidth = () => {
     const { min, max } = gameState.frequencyBand;
     const bandWidth = max - min;
     const cursorWidth = (bandWidth / (MAX_FREQ - MIN_FREQ)) * 100;
     return Math.max(1, Math.min(100, cursorWidth)); // Ensure width is between 1% and 100%
-  };
-
-  // Generate frequency band based on level
-  const generateFrequencyBand = (level: number) => {
-    const baseMin = 20;
-    const baseMax = 20000;
-    const bandSize = Math.pow(2, level - 1); // Each level halves the frequency range
-    
-    const centerFreq = Math.sqrt(baseMin * baseMax);
-    const minFreq = Math.max(baseMin, centerFreq / bandSize);
-    const maxFreq = Math.min(baseMax, centerFreq * bandSize);
-    
-    return { min: minFreq, max: maxFreq };
   };
 
   // Generate a random frequency within the current band
@@ -257,11 +243,6 @@ const FindTheFreq: React.FC = () => {
     }, 2000);
   };
 
-  // Handle quit game
-  const handleQuitGame = () => {
-    window.location.reload();
-  };
-
   // Calculate frequency from mouse position
   const calculateFrequency = (clientX: number) => {
     if (!spectrumRef.current) return 0;
@@ -296,7 +277,7 @@ const FindTheFreq: React.FC = () => {
   // Calculate cursor edges (logarithmic, clamped)
   const calculateCursorEdges = (frequency: number) => {
     // Cursor width in log space (as a fraction of the log scale)
-    const cursorWidthPercent = calculateCursorWidth(frequency);
+    const cursorWidthPercent = calculateCursorWidth();
     const minLog = Math.log10(MIN_FREQ);
     const maxLog = Math.log10(MAX_FREQ);
     const freqLog = Math.log10(frequency);
@@ -518,7 +499,7 @@ const FindTheFreq: React.FC = () => {
               className="frequency-indicator"
               style={{ 
                 left: `${indicatorPosition}%`,
-                width: `${calculateCursorWidth(currentFrequency)}%`
+                width: `${calculateCursorWidth()}%`
               }}
             />
             {currentFrequency > 0 && (

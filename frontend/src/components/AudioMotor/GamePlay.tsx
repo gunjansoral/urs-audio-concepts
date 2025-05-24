@@ -3,7 +3,7 @@ import { useAudioMotor } from '../../context/AudioMotorContext';
 import './GamePlay.css';
 
 const GamePlay: React.FC = () => {
-  const { currentGame, gameState, exitGame, pauseGame, nextRound, submitAnswer } = useAudioMotor();
+  const { currentGame, gameState, exitGame, nextRound, submitAnswer } = useAudioMotor();
   const [selectedFrequency, setSelectedFrequency] = useState<number | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 

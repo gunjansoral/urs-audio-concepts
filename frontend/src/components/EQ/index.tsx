@@ -1,6 +1,6 @@
-import React, { useRef, useState, useCallback, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import type { Band, BandType, EQProps } from "./types";
-import { BAND_COLORS, CANVAS_SIZE } from "./constants";
+import { BAND_COLORS } from "./constants";
 import { freqToX, xToFreq } from "./utils";
 import Header from "./components/Header";
 import Presets from "./components/Presets";
@@ -37,7 +37,7 @@ const EQ: React.FC<EQProps> = ({ audio, onEqChange }) => {
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [isGlobalBypass, setIsGlobalBypass] = useState(false);
-  const [showOptions, setShowOptions] = useState(false);
+  // const [showOptions, setShowOptions] = useState(false);
   const [gainRange, setGainRange] = useState(12); // Default to ±12dB range
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -94,7 +94,7 @@ const EQ: React.FC<EQProps> = ({ audio, onEqChange }) => {
 
     if (!clickedBand) {
       setSelectedBand(null);
-      setShowOptions(false);
+      // setShowOptions(false);
     }
   };
 
@@ -400,21 +400,12 @@ const EQ: React.FC<EQProps> = ({ audio, onEqChange }) => {
       // Only deselect if clicking outside the container
       if (selectedBand) {
         setSelectedBand(null);
-        setShowOptions(false);
+        // setShowOptions(false);
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [selectedBand]);
-
-  // Show options when band is selected
-  useEffect(() => {
-    if (selectedBand) {
-      setShowOptions(true);
-    } else {
-      setShowOptions(false);
-    }
   }, [selectedBand]);
 
   // Auto-select first band if none is selected and bands exist
